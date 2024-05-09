@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Academy_employee_managment.mybatis.PositionMyBatis">
+    <select id ="getAllPos" resultType="Position">
+        SELECT <include refid="appsBaseColumns"></include>
+        FROM employee_management.positions p left join employee_management.departments d
+        on p.departmentId=d.departmentId;
+    </select>
+    <select id="getOnePos" resultType="Position">
+        SELECT <include refid="appsBaseColumns"></include>
+        FROM employee_management.positions p left join departments d
+        on p.departmentId=d.departmentId
+        <where>
+            p.positionId=#{positionId};
+        </where>
+    </select>
+    <insert id="savePos">
+        insert into Positions(
+        positionName,
+        salary,
+        departmentId,
+        posCreatedAtDep,
+        posUpdatedAt)
+        values(
+        #{positionName},
+        #{salary},
+        #{departmentId},
+        #{posCreatedAtDep},
+        #{posUpdatedAt}
+        );
+    </insert>
+    <update id="editPos">
+        update employee_management.positions p
+        set p.positionName=#{positionName},
+        p.salary=#{salary},
+        p.departmentId=#{departmentId},
+        p.posCreatedAtDep=#{posCreatedAtDep},
+        p.posUpdatedAt=#{posUpdatedAt},
+        }
+        where p.positionId=#{positionId};
+    </update>
+    <delete id="deletePos">
+        FROM employee_management.positions p
+        <where>
+            e.positionId=#{positionId};
+        </where>
+    </delete>
+    <sql id="appsBaseColumns">
+        p.positionId,
+        p.positionName,
+        p.salary,
+        p.departmentId,
+        p.posCreatedAtDep,
+        p.posUpdatedAt
+    </sql>
+</mapper>

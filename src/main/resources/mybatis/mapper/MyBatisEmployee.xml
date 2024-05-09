@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Academy_employee_managment.mybatis.EmployeeMyBatis">
+    <select id ="getAllEmp" resultType="Employee">
+        SELECT <include refid="appBasesColumns"></include>
+        FROM employee_management.employee e left join employee_management.departments d
+        on e.departmentId=d.departmentId
+        left join positions p
+        on e.positionId=p.positionId;
+    </select>
+    <select id="getOneEmp" resultType="Employee">
+        SELECT <include refid="appBasesColumns"></include>
+        FROM employee_management.employee e left join employee_management.departments d
+        on e.departmentId=d.departmentId
+        left join positions p
+        on p.positionId=e.positionId;
+        <where>
+            e.employeeId=#{employeeId};
+        </where>
+    </select>
+    <insert id="saveEmp">
+        insert into Employee(
+        empName,
+        departmentId,
+        status,
+        empSurname,
+        empEmail,
+        empCreatedAt,
+        empUpdatedAt,
+        positionId
+        )
+        values(
+        #{positionName},
+        #{departmentId},
+        #{status},
+        #{empSurname},
+        #{empEmail},
+        #{empCreatedAt},
+        #{empUpdatedAt};
+        #{positionId});
+    </insert>
+    <update id="editEmp">
+        update employee_management.employee e
+        set e.empName=#{empName},
+        e.departmentId=#{departmentId},
+        e.status=#{status},
+        e.empSurname=#{empSurname},
+        e.empEmail=#{empEmail},
+        e.empCreatedAt=#{empCreatedAt},
+        e.empUpdatedAt=#{empUpdatedAt},
+        e.positionId=#{positionId},
+        }
+        where e.employeeId=#{employeeId};
+    </update>
+    <delete id="deleteEmp">
+        FROM employee_management.employee e
+        <where>
+            e.employeeId=#{employeeId};
+        </where>
+    </delete>
+    <sql id="appBasesColumns">
+        e.employeeId,
+        e.empName,
+        e.departmentId,
+        e.status,
+        e.empSurname,
+        e.empEmail,
+        e.empCreatedAt,
+        e.empUpdatedAt,
+        e.positionId
+    </sql>
+</mapper>

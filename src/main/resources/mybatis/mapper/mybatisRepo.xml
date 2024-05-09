@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Academy_employee_managment.mybatis.DepartmentMyBatis">
+    <select id ="getAllDep" resultType="Department">
+        SELECT
+        d.departmentId,
+        d.depName,
+        d.depCreatedAtDep,
+        d.depUpdatedAt
+        FROM employee_management.departments d;
+    </select>
+    <select id="getOneDep" resultType="Department">
+        SELECT <include refid="appBaseColumns"></include>
+        FROM employee_management.departments d
+        <where>
+            d.departmentId=#{departmentId};
+        </where>
+    </select>
+    <insert id="saveDep">
+        insert into Departments(
+        depName,
+        depCreatedAtDep,
+        depUpdatedAt
+        )
+        values(
+        #{depName},
+        #{depCreatedAtDep},
+        #{depUpdatedAt}
+        );
+    </insert>
+    <update id="editDep">
+        update employee_management.departments d
+        set d.depName=#{depName},
+        d.depCreatedAtDep=#{depCreatedAtDep},
+        d.depUpdatedAt=#{depUpdatedAt}
+        where d.departmentId=#{departmentId};
+    </update>
+    <delete id="deleteDep">
+        FROM employee_management.departments d
+        <where>
+            d.departmentId=#{departmentId};
+        </where>
+    </delete>
+    <sql id="appBaseColumns">
+        d.departmentId,
+        d.depName,
+        d.depCreatedAtDep,
+        d.depUpdatedAt
+    </sql>
+</mapper>
