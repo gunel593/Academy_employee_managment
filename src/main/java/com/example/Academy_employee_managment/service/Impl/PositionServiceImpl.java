@@ -1,4 +1,4 @@
-package com.example.Academy_employee_managment.service;
+package com.example.Academy_employee_managment.service.Impl;
 
 import com.example.Academy_employee_managment.mapper.DepartmentMapper;
 import com.example.Academy_employee_managment.mapper.PositionMapper;
@@ -9,6 +9,7 @@ import com.example.Academy_employee_managment.model.entity.Department;
 import com.example.Academy_employee_managment.model.entity.Position;
 import com.example.Academy_employee_managment.mybatis.DepartmentMyBatis;
 import com.example.Academy_employee_managment.mybatis.PositionMyBatis;
+import com.example.Academy_employee_managment.service.PositionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 //import org.springframework.security.access.method.P;

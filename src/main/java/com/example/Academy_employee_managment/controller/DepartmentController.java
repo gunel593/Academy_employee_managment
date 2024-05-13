@@ -19,8 +19,8 @@ public class DepartmentController {
         List<DepartmentResponce>deps= departmentService.depGetAll();
         return ResponseEntity.ok(deps);
     }
-    @GetMapping("id/{departmentId}")
-    public ResponseEntity <DepartmentResponce> getOneDeps(@PathVariable("id")Long departmentId){
+    @GetMapping("/id/{departmentId}")
+    public ResponseEntity <DepartmentResponce> getOneDeps(@PathVariable("departmentId")Long departmentId){
         DepartmentResponce dep= departmentService.depgetOne(departmentId);
         return ResponseEntity.ok(dep);
     }

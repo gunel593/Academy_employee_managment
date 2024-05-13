@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface DepartmentService {
     List<DepartmentResponce> depGetAll();
-    DepartmentResponce depgetOne(Long Depatmentid);
+    DepartmentResponce depgetOne(Long departmentId);
     void saveDep(DepartmentRequest departmentRequest);
-    void editDep(Long Depatmentid, DepartmentRequest departmentRequest);
-    void deleteDep(Long Depatmentid);
+    void editDep(Long departmentId, DepartmentRequest departmentRequest);
+    void deleteDep(Long departmentId);
 
 
 }

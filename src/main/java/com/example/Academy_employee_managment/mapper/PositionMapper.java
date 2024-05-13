@@ -7,14 +7,18 @@ import com.example.Academy_employee_managment.model.dto.responce.PositionResponc
 import com.example.Academy_employee_managment.model.entity.Employee;
 import com.example.Academy_employee_managment.model.entity.Position;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.time.LocalDateTime;
 import java.util.List;
-@Mapper
+@Mapper(componentModel = "spring", imports = {LocalDateTime.class})
 public interface PositionMapper {
     PositionMapper INSTANCE = Mappers.getMapper(PositionMapper.class);
     List<PositionResponce> toPositionResponceList (List<Position>positionList);
     PositionResponce toposResponce(Position position);
+    @Mapping(target = "posCreatedAtDep", expression = "java(LocalDateTime.now())")
     Position toPosition(PositionResquest positionResquest);
+    @Mapping(target = "posUpdatedAt", expression = "java(LocalDateTime.now())")
     Position toPositionByID (Long positionId,PositionResquest positionResquest);
 }

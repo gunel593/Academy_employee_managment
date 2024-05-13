@@ -13,13 +13,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EmployeeResquest {
-    private String employeeId;
+    //private String employeeId;
     private String empName;
     private String empSurname;
     private String empEmail;
     private Integer status;
     private Department departmentId;
     private Position positionId;
-    private LocalDateTime empCreatedAt;
-    private LocalDateTime empUpdatedAt;
+ //   private LocalDateTime empCreatedAt;
+ //   private LocalDateTime empUpdatedAt;
 }

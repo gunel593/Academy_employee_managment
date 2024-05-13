@@ -1,4 +1,4 @@
-package com.example.Academy_employee_managment.service;
+package com.example.Academy_employee_managment.service.Impl;
 
 import com.example.Academy_employee_managment.mapper.DepartmentMapper;
 import com.example.Academy_employee_managment.mapper.EmployeeMapper;
@@ -10,6 +10,7 @@ import com.example.Academy_employee_managment.model.entity.Department;
 import com.example.Academy_employee_managment.model.entity.Employee;
 import com.example.Academy_employee_managment.mybatis.DepartmentMyBatis;
 import com.example.Academy_employee_managment.mybatis.EmployeeMyBatis;
+import com.example.Academy_employee_managment.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ import java.util.Optional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeMapper employeeMapper;
     private final EmployeeMyBatis employeeMyBatis;
 

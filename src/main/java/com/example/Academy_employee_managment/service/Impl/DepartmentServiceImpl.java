@@ -1,10 +1,11 @@
-package com.example.Academy_employee_managment.service;
+package com.example.Academy_employee_managment.service.Impl;
 
 import com.example.Academy_employee_managment.mapper.DepartmentMapper;
 import com.example.Academy_employee_managment.model.dto.request.DepartmentRequest;
 import com.example.Academy_employee_managment.model.dto.responce.DepartmentResponce;
 import com.example.Academy_employee_managment.model.entity.Department;
 import com.example.Academy_employee_managment.mybatis.DepartmentMyBatis;
+import com.example.Academy_employee_managment.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.Optional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class DepartmentServiceImpl implements DepartmentService{
+public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentMapper departmentMapper;
     private final DepartmentMyBatis departmentMyBatis;
     @Override

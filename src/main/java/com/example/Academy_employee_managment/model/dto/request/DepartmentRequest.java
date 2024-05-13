@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DepartmentRequest {
-    private Long departmentId;
+  // private Long departmentId;
     private String depName;
-    private LocalDateTime depCreatedAtDep;
-    private LocalDateTime depUpdatedAt;
+   // private LocalDateTime depCreatedAtDep;
+  //  private LocalDateTime depUpdatedAt;
 }
