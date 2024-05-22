@@ -16,14 +16,8 @@ public class PositionResponce {
     private Long positionId;
     private String positionName;
     private Long salary;
-    private Department departmentId;
+    //private Department department;
     private LocalDateTime posCreatedAtDep;
     private LocalDateTime posUpdatedAt;
-    public PositionResponce(Department departmentId) {
-        this.departmentId = departmentId;
-    }
 
-    public void setDepartmentId(Department departmentId) {
-        this.departmentId = departmentId;
-    }
 }

@@ -11,7 +11,7 @@ import java.util.Optional;
 @Mapper
 public interface EmployeeMyBatis {
     List<Employee> getAllEmp();
-    Optional<Employee> getOneEmp(@Param("employeeId")Long employeeId);
+    Optional<Employee> getEmployeeById(@Param("employeeId")Long employeeId);
     void saveEmp(Employee employee);
     void editEmp(Employee employee);
     void deleteEmp(@Param("employeeId")Long employeeId);

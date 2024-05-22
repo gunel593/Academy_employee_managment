@@ -20,8 +20,8 @@ public class DepartmentController {
         return ResponseEntity.ok(deps);
     }
     @GetMapping("/id/{departmentId}")
-    public ResponseEntity <DepartmentResponce> getOneDeps(@PathVariable("departmentId")Long departmentId){
-        DepartmentResponce dep= departmentService.depgetOne(departmentId);
+    public ResponseEntity <DepartmentResponce> getDepartmenById(@PathVariable("departmentId")Long departmentId){
+        DepartmentResponce dep= departmentService.getDepartmentById(departmentId);
         return ResponseEntity.ok(dep);
     }
     @PostMapping

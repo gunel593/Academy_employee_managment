@@ -2,6 +2,8 @@ package com.example.Academy_employee_managment.controller;
 
 import com.example.Academy_employee_managment.model.dto.request.PositionResquest;
 import com.example.Academy_employee_managment.model.dto.responce.PositionResponce;
+import com.example.Academy_employee_managment.model.dto.wrapper.ConnectRapper;
+import com.example.Academy_employee_managment.model.entity.Position;
 import com.example.Academy_employee_managment.service.PositionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +17,13 @@ import java.util.List;
 public class PositionController {
     private final PositionService positionService;
     @GetMapping
-    public ResponseEntity<List<PositionResponce>> getAllPos(){
-        List<PositionResponce>poss= positionService.posGetAll();
+    public ResponseEntity<List<ConnectRapper>> getAllPos(){
+        List<ConnectRapper> poss= positionService.posGetAll();
         return ResponseEntity.ok(poss);
     }
     @GetMapping("positionId/{positionId}")
-    public ResponseEntity <PositionResponce> getOnePos(@PathVariable("positionId")Long positionId){
-        PositionResponce pos= positionService.getOnePos(positionId);
+    public ResponseEntity <PositionResponce> getPositionById(@PathVariable("positionId")Long positionId){
+        PositionResponce pos= positionService.getPositionById(positionId);
         return ResponseEntity.ok(pos);
     }
     @PostMapping

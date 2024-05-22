@@ -23,8 +23,8 @@ public class EmployeeController {
         return ResponseEntity.ok(emps);
     }
     @GetMapping("employeeId/{employeeId}")
-    public ResponseEntity <EmployeeResponce> getOneEmps(@PathVariable("employeeId")Long employeeId){
-        EmployeeResponce emp= employeeService.empgetOne(employeeId);
+    public ResponseEntity <EmployeeResponce> getEmployeeById(@PathVariable("employeeId")Long employeeId){
+        EmployeeResponce emp= employeeService.getEmployeeById(employeeId);
         return ResponseEntity.ok(emp);
     }
     @PostMapping

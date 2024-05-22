@@ -16,14 +16,8 @@ public class PositionResquest {
     //private Long positionId;
     private String positionName;
     private Long salary;
-    private Department departmentId;
+    private Long departmentId;
   //  private LocalDateTime posCreatedAtDep;
   //  private LocalDateTime posUpdatedAt;
-    public PositionResquest(Department departmentId) {
-        this.departmentId = departmentId;
-    }
 
-    public void setDepartmentId(Department departmentId) {
-        this.departmentId = departmentId;
-    }
 }

@@ -25,10 +25,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeMapper employeeMapper;
     private final EmployeeMyBatis employeeMyBatis;
 
-
-//    @Override
-//    public void deleteDep(Long departmentId) {
-//        departmentMyBatis.deleteDep(departmentId);
     @Override
     public List<EmployeeResponce> empGetAll() {
         List<Employee>employees=employeeMyBatis.getAllEmp();
@@ -37,8 +33,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public EmployeeResponce empgetOne(Long employeeId) {
-        Optional<Employee> employeeOptional=employeeMyBatis.getOneEmp(employeeId);
+    public EmployeeResponce getEmployeeById(Long employeeId) {
+        Optional<Employee> employeeOptional=employeeMyBatis.getEmployeeById(employeeId);
         return employeeOptional.map(employeeMapper::toempResponce).orElse(null);
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface EmployeeService {
     List<EmployeeResponce> empGetAll();
-    EmployeeResponce empgetOne(Long employeeId);
+    EmployeeResponce getEmployeeById(Long employeeId);
     void saveEmp(EmployeeResquest employeeResquest);
     void editEmp(Long employeeId,EmployeeResquest employeeResquest);
     void deleteEmp(Long employeeId);

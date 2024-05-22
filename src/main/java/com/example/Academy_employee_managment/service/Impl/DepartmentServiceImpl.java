@@ -27,8 +27,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public DepartmentResponce depgetOne(Long departmentId) {
-        Optional<Department>departmentOptional=departmentMyBatis.getOneDep(departmentId);
+    public DepartmentResponce getDepartmentById(Long departmentId) {
+        Optional<Department>departmentOptional=departmentMyBatis.getDepartmentById(departmentId);
         return departmentOptional.map(departmentMapper::todepResponce).orElse(null);
     }
 

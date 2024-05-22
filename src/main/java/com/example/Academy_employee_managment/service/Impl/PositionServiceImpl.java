@@ -1,13 +1,10 @@
 package com.example.Academy_employee_managment.service.Impl;
 
-import com.example.Academy_employee_managment.mapper.DepartmentMapper;
 import com.example.Academy_employee_managment.mapper.PositionMapper;
 import com.example.Academy_employee_managment.model.dto.request.PositionResquest;
-import com.example.Academy_employee_managment.model.dto.responce.DepartmentResponce;
 import com.example.Academy_employee_managment.model.dto.responce.PositionResponce;
-import com.example.Academy_employee_managment.model.entity.Department;
+import com.example.Academy_employee_managment.model.dto.wrapper.ConnectRapper;
 import com.example.Academy_employee_managment.model.entity.Position;
-import com.example.Academy_employee_managment.mybatis.DepartmentMyBatis;
 import com.example.Academy_employee_managment.mybatis.PositionMyBatis;
 import com.example.Academy_employee_managment.service.PositionService;
 import lombok.RequiredArgsConstructor;
@@ -24,15 +21,18 @@ public class PositionServiceImpl implements PositionService {
     private final PositionMapper positionMapper;
     private final PositionMyBatis positionMyBatis;
     @Override
-    public List<PositionResponce> posGetAll() {
+    public List<ConnectRapper> posGetAll() {
         List<Position>positions=positionMyBatis.getAllPos();
-        List<PositionResponce>positionResponceList=positionMapper.toPositionResponceList(positions);
-        return positionResponceList;
+
+        List<Position>conectList=positionMapper.topositionList();
+        return ;
     }
 
+
+
     @Override
-    public PositionResponce getOnePos(Long positionId) {
-        Optional<Position>positionOptional=positionMyBatis.getOnePos(positionId);
+    public PositionResponce getPositionById(Long positionId) {
+        Optional<Position>positionOptional=positionMyBatis.getPositionById(positionId);
         return positionOptional.map(positionMapper::toposResponce).orElse(null);
     }
 
@@ -41,7 +41,7 @@ public class PositionServiceImpl implements PositionService {
         log.info("Insert received.PositionRequest:{}",positionResquest);
         Position positions=positionMapper.toPosition(positionResquest);
         log.info("positionMapper mapped to to Position.position:{}",positions);
-        positionMyBatis.savePos(positions);
+         positionMyBatis.savePos(positions);
         log.info("Add process was succesfull.");
         log.warn("Just warning{}",positionResquest);
         log.error("Just error.{}",positionResquest);

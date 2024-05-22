@@ -9,7 +9,7 @@ import java.util.Optional;
 @Mapper
 public interface DepartmentMyBatis {
     List<Department>getAllDep();
-    Optional<Department>getOneDep(@Param("departmentId")Long departmentId);
+    Optional<Department>getDepartmentById(@Param("departmentId")Long departmentId);
     void saveDep(Department department);
     void editDep(Department department);
     void deleteDep(@Param("departmentId")Long departmentId);

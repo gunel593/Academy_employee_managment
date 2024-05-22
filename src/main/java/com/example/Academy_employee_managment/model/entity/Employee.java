@@ -17,8 +17,8 @@ public class Employee {
     private String empSurname;
     private String empEmail;
     private Integer status;
-    private Department departmentId;
-    private Position positionId;
+    private Department department;
+    private Position position;
     private LocalDateTime empCreatedAt;
     private LocalDateTime empUpdatedAt;
 }

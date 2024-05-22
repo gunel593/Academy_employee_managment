@@ -20,5 +20,7 @@ public class EmployeeResponce {
     private Integer status;
     private Department departmentId;
     private Position positionId;
+    private LocalDateTime empCreatedAt;
+    private LocalDateTime empUpdatedAt;
 
 }

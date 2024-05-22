@@ -9,7 +9,7 @@ spring:
 mybatis:
     config-location: classpath:mybatis/mybatis-config.xml
     mapper-locations: classpath:mybatis/mapper/*.xml
-    type-aliases-package: com.example.Academy_employee_managment.model.entity
-security:
-  secret-key: CgTOA2QC9nxYspeBZBRsEIoDmpBbGTjfDCE6WfnOHHrA7rgHafqC5u1m6GL22pNY
-  expiration: 3000
+    type-aliases-package: com.example.Academy_employee_managment.model
+#security:
+#  secret-key: CgTOA2QC9nxYspeBZBRsEIoDmpBbGTjfDCE6WfnOHHrA7rgHafqC5u1m6GL22pNY
+#  expiration: 3000

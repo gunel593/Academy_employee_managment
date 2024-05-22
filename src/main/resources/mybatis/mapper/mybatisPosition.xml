@@ -3,13 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.Academy_employee_managment.mybatis.PositionMyBatis">
-    <select id ="getAllPos" resultType="Position">
+    <select id ="getAllPos" resultType="ConnectRapper">
         SELECT <include refid="appsBaseColumns"></include>
         FROM employee_management.positions p left join employee_management.departments d
         on p.departmentId=d.departmentId;
     </select>
-    <select id="getOnePos" resultType="Position">
+    <select id="getPositionById" resultType="Position">
         SELECT <include refid="appsBaseColumns"></include>
+        <include refid="appRapperColumns"></include>
         FROM employee_management.positions p left join departments d
         on p.departmentId=d.departmentId
         <where>
@@ -26,7 +27,7 @@
         values(
         #{positionName},
         #{salary},
-        #{departmentId},
+        #{department.departmentId},
         #{posCreatedAtDep},
         #{posUpdatedAt}
         );
@@ -54,5 +55,11 @@
         p.departmentId,
         p.posCreatedAtDep,
         p.posUpdatedAt
+    </sql>
+    <sql id="appRapperColumns">
+        d.departmentId,
+        d.depName,
+        d.depCreatedAtDep,
+        d.depUpdatedAt
     </sql>
 </mapper>

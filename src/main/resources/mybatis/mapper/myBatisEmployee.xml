@@ -10,7 +10,7 @@
         left join positions p
         on e.positionId=p.positionId;
     </select>
-    <select id="getOneEmp" resultType="Employee">
+    <select id="getEmployeeById" resultType="Employee">
         SELECT <include refid="appBasesColumns"></include>
         FROM employee_management.employee e left join employee_management.departments d
         on e.departmentId=d.departmentId

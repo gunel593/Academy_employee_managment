@@ -11,7 +11,7 @@
         d.depUpdatedAt
         FROM employee_management.departments d;
     </select>
-    <select id="getOneDep" resultType="Department">
+    <select id="getDepartmentById" resultType="Department">
         SELECT <include refid="appBaseColumns"></include>
         FROM employee_management.departments d
         <where>
