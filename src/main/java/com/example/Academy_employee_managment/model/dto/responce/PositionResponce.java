@@ -16,7 +16,7 @@ public class PositionResponce {
     private Long positionId;
     private String positionName;
     private Long salary;
-    //private Department department;
+    private Department department;
     private LocalDateTime posCreatedAtDep;
     private LocalDateTime posUpdatedAt;
 

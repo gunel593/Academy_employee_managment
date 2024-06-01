@@ -14,8 +14,7 @@ public class Position {
     private Long positionId;
     private String positionName;
     private Long salary;
-    private Department department;
+    private Long departmentId;
     private LocalDateTime posCreatedAtDep;
     private LocalDateTime posUpdatedAt;
-
 }

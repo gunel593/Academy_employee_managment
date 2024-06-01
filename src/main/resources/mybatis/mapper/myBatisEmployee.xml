@@ -3,15 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.Academy_employee_managment.mybatis.EmployeeMyBatis">
-    <select id ="getAllEmp" resultType="Employee">
-        SELECT <include refid="appBasesColumns"></include>
+    <select id ="getAllEmp" resultType="EmpWrapper">
+        SELECT <include refid="appWrapperColumns"></include>
         FROM employee_management.employee e left join employee_management.departments d
         on e.departmentId=d.departmentId
         left join positions p
         on e.positionId=p.positionId;
     </select>
-    <select id="getEmployeeById" resultType="Employee">
-        SELECT <include refid="appBasesColumns"></include>
+    <select id="getEmployeeById" resultType="EmpWrapper">
+        SELECT <include refid="appWrapperColumns"></include>
         FROM employee_management.employee e left join employee_management.departments d
         on e.departmentId=d.departmentId
         left join positions p
@@ -70,5 +70,23 @@
         e.empCreatedAt,
         e.empUpdatedAt,
         e.positionId
+    </sql>
+    <sql id="appWrapperColumns">
+        p.positionId ,
+        p.positionName,
+        p.salary,
+        p.posCreatedAtDep,
+        p.posUpdatedAt,
+        d.departmentId ,
+        d.depName,
+        d.depCreatedAtDep,
+        d.depUpdatedAt
+        e.employeeId,
+        e.empName,
+        e.status,
+        e.empSurname,
+        e.empEmail,
+        e.empCreatedAt,
+        e.empUpdatedAt,
     </sql>
 </mapper>

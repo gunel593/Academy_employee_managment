@@ -3,14 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.Academy_employee_managment.mybatis.PositionMyBatis">
-    <select id ="getAllPos" resultType="ConnectRapper">
-        SELECT <include refid="appsBaseColumns"></include>
+    <select id ="getAllPos" resultType="Wrapper">
+        SELECT <include refid="appWrapperColumns"></include>
         FROM employee_management.positions p left join employee_management.departments d
         on p.departmentId=d.departmentId;
     </select>
-    <select id="getPositionById" resultType="Position">
-        SELECT <include refid="appsBaseColumns"></include>
-        <include refid="appRapperColumns"></include>
+    <select id="getPositionById" resultType="Wrapper">
+        SELECT <include refid="appWrapperColumns"></include>
         FROM employee_management.positions p left join departments d
         on p.departmentId=d.departmentId
         <where>
@@ -21,15 +20,12 @@
         insert into Positions(
         positionName,
         salary,
-        departmentId,
-        posCreatedAtDep,
-        posUpdatedAt)
+        departmentId
+       )
         values(
         #{positionName},
         #{salary},
-        #{department.departmentId},
-        #{posCreatedAtDep},
-        #{posUpdatedAt}
+        #{departmentId}
         );
     </insert>
     <update id="editPos">
@@ -56,7 +52,12 @@
         p.posCreatedAtDep,
         p.posUpdatedAt
     </sql>
-    <sql id="appRapperColumns">
+    <sql id="appWrapperColumns">
+        p.positionId,
+        p.positionName,
+        p.salary,
+        p.posCreatedAtDep,
+        p.posUpdatedAt,
         d.departmentId,
         d.depName,
         d.depCreatedAtDep,

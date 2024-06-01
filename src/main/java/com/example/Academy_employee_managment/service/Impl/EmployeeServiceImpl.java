@@ -6,6 +6,7 @@ import com.example.Academy_employee_managment.model.dto.request.DepartmentReques
 import com.example.Academy_employee_managment.model.dto.request.EmployeeResquest;
 import com.example.Academy_employee_managment.model.dto.responce.DepartmentResponce;
 import com.example.Academy_employee_managment.model.dto.responce.EmployeeResponce;
+import com.example.Academy_employee_managment.model.dto.wrapper.EmpWrapper;
 import com.example.Academy_employee_managment.model.entity.Department;
 import com.example.Academy_employee_managment.model.entity.Employee;
 import com.example.Academy_employee_managment.mybatis.DepartmentMyBatis;
@@ -27,15 +28,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeResponce> empGetAll() {
-        List<Employee>employees=employeeMyBatis.getAllEmp();
-      List<EmployeeResponce> employeeResponceList=employeeMapper.toEmployeeResponceList(employees);
+        List<EmpWrapper>empWrapperList=employeeMyBatis.getAllEmp();
+      List<EmployeeResponce> employeeResponceList=employeeMapper.toEmployeeResponceList(empWrapperList);
             return employeeResponceList;
     }
 
     @Override
     public EmployeeResponce getEmployeeById(Long employeeId) {
-        Optional<Employee> employeeOptional=employeeMyBatis.getEmployeeById(employeeId);
-        return employeeOptional.map(employeeMapper::toempResponce).orElse(null);
+        EmpWrapper empWrapper=employeeMyBatis.getEmployeeById(employeeId);
+        return employeeMapper.toempResponce(empWrapper);
+
+      //  return employeeOptional.map(employeeMapper::toempResponce).orElse(null);
     }
 
     @Override

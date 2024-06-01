@@ -3,7 +3,7 @@ package com.example.Academy_employee_managment.service.Impl;
 import com.example.Academy_employee_managment.mapper.PositionMapper;
 import com.example.Academy_employee_managment.model.dto.request.PositionResquest;
 import com.example.Academy_employee_managment.model.dto.responce.PositionResponce;
-import com.example.Academy_employee_managment.model.dto.wrapper.ConnectRapper;
+import com.example.Academy_employee_managment.model.dto.wrapper.Wrapper;
 import com.example.Academy_employee_managment.model.entity.Position;
 import com.example.Academy_employee_managment.mybatis.PositionMyBatis;
 import com.example.Academy_employee_managment.service.PositionService;
@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 //import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -21,19 +22,19 @@ public class PositionServiceImpl implements PositionService {
     private final PositionMapper positionMapper;
     private final PositionMyBatis positionMyBatis;
     @Override
-    public List<ConnectRapper> posGetAll() {
-        List<Position>positions=positionMyBatis.getAllPos();
-
-        List<Position>conectList=positionMapper.topositionList();
-        return ;
+    public List<PositionResponce> posGetAll() {
+        List<Wrapper> wrapperList =positionMyBatis.getAllPos();
+        List<PositionResponce>positionList= positionMapper.topositionList(wrapperList);
+        return positionList;
     }
 
 
 
     @Override
     public PositionResponce getPositionById(Long positionId) {
-        Optional<Position>positionOptional=positionMyBatis.getPositionById(positionId);
-        return positionOptional.map(positionMapper::toposResponce).orElse(null);
+        Wrapper wrapper=positionMyBatis.getPositionById(positionId);//.orElse(null);
+        return  positionMapper.toposResponce(wrapper);
+       // return wrapperOptional.map(positionMapper::toposResponce).orElse(null);
     }
 
     @Override

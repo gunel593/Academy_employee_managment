@@ -17,7 +17,7 @@ public class PositionResquest {
     private String positionName;
     private Long salary;
     private Long departmentId;
-  //  private LocalDateTime posCreatedAtDep;
-  //  private LocalDateTime posUpdatedAt;
+    private LocalDateTime posCreatedAtDep;
+   private LocalDateTime posUpdatedAt;
 
 }

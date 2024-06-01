@@ -10,7 +10,7 @@
 //
 //@Mapper(componentModel = "spring",imports={LocalDateTime.class})
 //public interface UserMapper {
-//    UserMapper INSTANCE= Mappers.getMapper(UserMapper.class);
+//
 //    @Mapping(target = "userCreatedAt",expression = "java(LocalDateTime.now())")
 //    @Mapping(target = "userUpdatedAt",expression = "java(LocalDateTime.now())")
 //    User toUser(UserRequest userRequest);

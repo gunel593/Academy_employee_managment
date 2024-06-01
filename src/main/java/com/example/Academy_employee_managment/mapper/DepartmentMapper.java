@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 @Mapper(componentModel = "spring", imports = {LocalDateTime.class})
 public interface DepartmentMapper {
-    DepartmentMapper INSTANCE = Mappers.getMapper(DepartmentMapper.class);
+    //DepartmentMapper INSTANCE = Mappers.getMapper(DepartmentMapper.class);
     List<DepartmentResponce>toDepartmentResponceList (List<Department>departmentList);
     DepartmentResponce todepResponce(Department department);
     @Mapping(target = "depCreatedAtDep", expression = "java(LocalDateTime.now())")
