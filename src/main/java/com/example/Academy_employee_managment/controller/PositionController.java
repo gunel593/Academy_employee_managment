@@ -1,7 +1,7 @@
 package com.example.Academy_employee_managment.controller;
 
-import com.example.Academy_employee_managment.model.dto.request.PositionResquest;
-import com.example.Academy_employee_managment.model.dto.responce.PositionResponce;
+import com.example.Academy_employee_managment.model.dto.request.PositionRequest;
+import com.example.Academy_employee_managment.model.dto.responce.PositionResponse;
 import com.example.Academy_employee_managment.service.PositionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,29 +15,29 @@ import java.util.List;
 public class PositionController {
     private final PositionService positionService;
     @GetMapping
-    public ResponseEntity<List<PositionResponce>> getAllPos(){
-        List<PositionResponce> poss= positionService.posGetAll();
+    public ResponseEntity<List<PositionResponse>> getAllPos(){
+        List<PositionResponse> poss= positionService.posGetAll();
         return ResponseEntity.ok(poss);
     }
-    @GetMapping("positionId/{positionId}")
-    public ResponseEntity <PositionResponce> getPositionById(@PathVariable("positionId")Long positionId,
+    @GetMapping("id/{positionId}")
+    public ResponseEntity <PositionResponse> getPositionById(@PathVariable("positionId")Long positionId,
                                                              @PathVariable("departmentId")Long departmentId
                                                              ){
-        PositionResponce pos= positionService.getPositionById(positionId);
+        PositionResponse pos= positionService.getPositionById(positionId);
         return ResponseEntity.ok(pos);
     }
     @PostMapping
-    public ResponseEntity <Void> savePos(@RequestBody PositionResquest positionResquest) {
-        positionService.savePos(positionResquest);
+    public ResponseEntity <Void> savePos(@RequestBody PositionRequest positionRequest) {
+        positionService.savePos(positionRequest);
         return ResponseEntity.ok().build();
     }
-    @PutMapping("positionId/{positionId}")
+    @PutMapping("id/{positionId}")
     public ResponseEntity <Void> editPos(@PathVariable("positionId")Long positionId,
-                                          @RequestBody PositionResquest positionResquest){
-        positionService.editPos(positionId,positionResquest);
+                                          @RequestBody PositionRequest positionRequest){
+        positionService.editPos(positionId, positionRequest);
         return ResponseEntity.ok().build();
     }
-    @DeleteMapping("positionId/{positionId}")
+    @DeleteMapping("id/{positionId}")
     public ResponseEntity <Void> deletePos(@PathVariable("positionId")Long positionId){
         positionService.deletePos(positionId);
         return ResponseEntity.ok().build();

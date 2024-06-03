@@ -1,15 +1,10 @@
 package com.example.Academy_employee_managment.service.Impl;
 
-import com.example.Academy_employee_managment.mapper.DepartmentMapper;
 import com.example.Academy_employee_managment.mapper.EmployeeMapper;
-import com.example.Academy_employee_managment.model.dto.request.DepartmentRequest;
-import com.example.Academy_employee_managment.model.dto.request.EmployeeResquest;
-import com.example.Academy_employee_managment.model.dto.responce.DepartmentResponce;
-import com.example.Academy_employee_managment.model.dto.responce.EmployeeResponce;
+import com.example.Academy_employee_managment.model.dto.request.EmployeeRequest;
+import com.example.Academy_employee_managment.model.dto.responce.EmployeeResponse;
 import com.example.Academy_employee_managment.model.dto.wrapper.EmpWrapper;
-import com.example.Academy_employee_managment.model.entity.Department;
 import com.example.Academy_employee_managment.model.entity.Employee;
-import com.example.Academy_employee_managment.mybatis.DepartmentMyBatis;
 import com.example.Academy_employee_managment.mybatis.EmployeeMyBatis;
 import com.example.Academy_employee_managment.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -27,14 +21,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeMyBatis employeeMyBatis;
 
     @Override
-    public List<EmployeeResponce> empGetAll() {
+    public List<EmployeeResponse> empGetAll() {
         List<EmpWrapper>empWrapperList=employeeMyBatis.getAllEmp();
-      List<EmployeeResponce> employeeResponceList=employeeMapper.toEmployeeResponceList(empWrapperList);
-            return employeeResponceList;
+      List<EmployeeResponse> employeeResponseList =employeeMapper.toEmployeeResponceList(empWrapperList);
+            return employeeResponseList;
     }
 
     @Override
-    public EmployeeResponce getEmployeeById(Long employeeId) {
+    public EmployeeResponse getEmployeeById(Long employeeId) {
         EmpWrapper empWrapper=employeeMyBatis.getEmployeeById(employeeId);
         return employeeMapper.toempResponce(empWrapper);
 
@@ -42,19 +36,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void saveEmp(EmployeeResquest employeeResquest) {
-        log.info("Insert received.EmployeeResquest:{}",employeeResquest);
-        Employee employees=employeeMapper.toEmployee(employeeResquest);
+    public void saveEmp(EmployeeRequest employeeRequest) {
+        log.info("Insert received.EmployeeRequest:{}", employeeRequest);
+        Employee employees=employeeMapper.toEmployee(employeeRequest);
         log.info("employeeMapper mapped to to Employee.employee:{}",employees);
             employeeMyBatis.saveEmp(employees);
         log.info("Add process was succesfull.");
-        log.warn("Just warning{}",employeeResquest);
-        log.error("Just error.{}",employeeResquest);
+        log.warn("Just warning{}", employeeRequest);
+        log.error("Just error.{}", employeeRequest);
     }
 
     @Override
-    public void editEmp(Long employeeId, EmployeeResquest employeeResquest) {
-        Employee employees=employeeMapper.toEmployeeByID(employeeId,employeeResquest);
+    public void editEmp(Long employeeId, EmployeeRequest employeeRequest) {
+        Employee employees=employeeMapper.toEmployeeByID(employeeId, employeeRequest);
            employeeMyBatis.editEmp(employees);
     }
 

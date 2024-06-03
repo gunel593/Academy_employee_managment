@@ -13,6 +13,6 @@ import java.time.LocalDateTime;
 public class DepartmentRequest {
   // private Long departmentId;
     private String depName;
-   // private LocalDateTime depCreatedAtDep;
-  //  private LocalDateTime depUpdatedAt;
+    private LocalDateTime depCreatedAt;
+   private LocalDateTime depUpdatedAt;
 }

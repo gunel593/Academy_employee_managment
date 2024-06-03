@@ -2,7 +2,7 @@ package com.example.Academy_employee_managment.service.Impl;
 
 import com.example.Academy_employee_managment.mapper.DepartmentMapper;
 import com.example.Academy_employee_managment.model.dto.request.DepartmentRequest;
-import com.example.Academy_employee_managment.model.dto.responce.DepartmentResponce;
+import com.example.Academy_employee_managment.model.dto.responce.DepartmentResponse;
 import com.example.Academy_employee_managment.model.entity.Department;
 import com.example.Academy_employee_managment.mybatis.DepartmentMyBatis;
 import com.example.Academy_employee_managment.service.DepartmentService;
@@ -20,14 +20,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentMapper departmentMapper;
     private final DepartmentMyBatis departmentMyBatis;
     @Override
-    public List<DepartmentResponce> depGetAll() {
+    public List<DepartmentResponse> depGetAll() {
      List<Department>departments=departmentMyBatis.getAllDep();
-     List<DepartmentResponce> departmentResponceList=departmentMapper.toDepartmentResponceList(departments);
-     return departmentResponceList;
+     List<DepartmentResponse> departmentResponseList =departmentMapper.toDepartmentResponceList(departments);
+     return departmentResponseList;
     }
 
     @Override
-    public DepartmentResponce getDepartmentById(Long departmentId) {
+    public DepartmentResponse getDepartmentById(Long departmentId) {
         Optional<Department>departmentOptional=departmentMyBatis.getDepartmentById(departmentId);
         return departmentOptional.map(departmentMapper::todepResponce).orElse(null);
     }

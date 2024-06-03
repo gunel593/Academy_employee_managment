@@ -15,7 +15,7 @@
         FROM employee_management.employee e left join employee_management.departments d
         on e.departmentId=d.departmentId
         left join positions p
-        on p.positionId=e.positionId;
+        on p.positionId=e.positionId
         <where>
             e.employeeId=#{employeeId};
         </where>
@@ -27,35 +27,35 @@
         status,
         empSurname,
         empEmail,
+        positionId,
         empCreatedAt,
-        empUpdatedAt,
-        positionId
+        empUpdatedAt
         )
         values(
-        #{positionName},
-        #{departmentId},
+        #{empName},
+        #{department.departmentId},
         #{status},
         #{empSurname},
         #{empEmail},
+        #{position.positionId},
         #{empCreatedAt},
-        #{empUpdatedAt};
-        #{positionId});
+        #{empUpdatedAt}
+        );
     </insert>
     <update id="editEmp">
         update employee_management.employee e
         set e.empName=#{empName},
-        e.departmentId=#{departmentId},
+        e.departmentId=#{department.departmentId},
         e.status=#{status},
         e.empSurname=#{empSurname},
         e.empEmail=#{empEmail},
-        e.empCreatedAt=#{empCreatedAt},
         e.empUpdatedAt=#{empUpdatedAt},
-        e.positionId=#{positionId},
-        }
+        e.positionId=#{position.positionId}
         where e.employeeId=#{employeeId};
     </update>
     <delete id="deleteEmp">
-        FROM employee_management.employee e
+        delete
+        from employee_management.employee e
         <where>
             e.employeeId=#{employeeId};
         </where>
@@ -72,15 +72,6 @@
         e.positionId
     </sql>
     <sql id="appWrapperColumns">
-        p.positionId ,
-        p.positionName,
-        p.salary,
-        p.posCreatedAtDep,
-        p.posUpdatedAt,
-        d.departmentId ,
-        d.depName,
-        d.depCreatedAtDep,
-        d.depUpdatedAt
         e.employeeId,
         e.empName,
         e.status,
@@ -88,5 +79,14 @@
         e.empEmail,
         e.empCreatedAt,
         e.empUpdatedAt,
+        p.positionId ,
+        p.positionName,
+        p.salary,
+        p.posCreatedAt,
+        p.posUpdatedAt,
+        d.departmentId,
+        d.depName,
+        d.depCreatedAt,
+        d.depUpdatedAt
     </sql>
 </mapper>

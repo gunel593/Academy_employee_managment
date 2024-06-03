@@ -1,8 +1,8 @@
 package com.example.Academy_employee_managment.service.Impl;
 
 import com.example.Academy_employee_managment.mapper.PositionMapper;
-import com.example.Academy_employee_managment.model.dto.request.PositionResquest;
-import com.example.Academy_employee_managment.model.dto.responce.PositionResponce;
+import com.example.Academy_employee_managment.model.dto.request.PositionRequest;
+import com.example.Academy_employee_managment.model.dto.responce.PositionResponse;
 import com.example.Academy_employee_managment.model.dto.wrapper.Wrapper;
 import com.example.Academy_employee_managment.model.entity.Position;
 import com.example.Academy_employee_managment.mybatis.PositionMyBatis;
@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -22,35 +21,35 @@ public class PositionServiceImpl implements PositionService {
     private final PositionMapper positionMapper;
     private final PositionMyBatis positionMyBatis;
     @Override
-    public List<PositionResponce> posGetAll() {
+    public List<PositionResponse> posGetAll() {
         List<Wrapper> wrapperList =positionMyBatis.getAllPos();
-        List<PositionResponce>positionList= positionMapper.topositionList(wrapperList);
+        List<PositionResponse>positionList= positionMapper.topositionList(wrapperList);
         return positionList;
     }
 
 
 
     @Override
-    public PositionResponce getPositionById(Long positionId) {
+    public PositionResponse getPositionById(Long positionId) {
         Wrapper wrapper=positionMyBatis.getPositionById(positionId);//.orElse(null);
         return  positionMapper.toposResponce(wrapper);
        // return wrapperOptional.map(positionMapper::toposResponce).orElse(null);
     }
 
     @Override
-    public void savePos(PositionResquest positionResquest) {
-        log.info("Insert received.PositionRequest:{}",positionResquest);
-        Position positions=positionMapper.toPosition(positionResquest);
+    public void savePos(PositionRequest positionRequest) {
+        log.info("Insert received.PositionRequest:{}", positionRequest);
+        Position positions=positionMapper.toPosition(positionRequest);
         log.info("positionMapper mapped to to Position.position:{}",positions);
          positionMyBatis.savePos(positions);
         log.info("Add process was succesfull.");
-        log.warn("Just warning{}",positionResquest);
-        log.error("Just error.{}",positionResquest);
+        log.warn("Just warning{}", positionRequest);
+        log.error("Just error.{}", positionRequest);
     }
 
     @Override
-    public void editPos(Long positionId, PositionResquest positionResquest) {
-        Position positions=positionMapper.toPositionByID(positionId,positionResquest);
+    public void editPos(Long positionId, PositionRequest positionRequest) {
+        Position positions=positionMapper.toPositionByID(positionId, positionRequest);
         positionMyBatis.editPos(positions);
     }
 

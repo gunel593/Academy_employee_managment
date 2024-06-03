@@ -1,7 +1,7 @@
 package com.example.Academy_employee_managment.mapper;
 
-import com.example.Academy_employee_managment.model.dto.request.PositionResquest;
-import com.example.Academy_employee_managment.model.dto.responce.PositionResponce;
+import com.example.Academy_employee_managment.model.dto.request.PositionRequest;
+import com.example.Academy_employee_managment.model.dto.responce.PositionResponse;
 import com.example.Academy_employee_managment.model.dto.wrapper.Wrapper;
 import com.example.Academy_employee_managment.model.entity.Position;
 import org.mapstruct.Mapper;
@@ -12,19 +12,19 @@ import java.util.List;
 @Mapper(componentModel = "spring", imports = {LocalDateTime.class})
 public interface PositionMapper {
    // PositionMapper INSTANCE = Mappers.getMapper(PositionMapper.class);
-   // List<PositionResponce> toPositionResponceList (List<Position>positionList);
+   // List<PositionResponse> toPositionResponceList (List<Position>positionList);
    @Mapping(target ="department.departmentId",source="departmentId")
    @Mapping(target ="department.depName",source="depName")
-   @Mapping(target ="department.depCreatedAtDep",source="depCreatedAtDep")
+   @Mapping(target ="department.depCreatedAt",source="depCreatedAt")
    @Mapping(target ="department.depUpdatedAt",source="depUpdatedAt")
-    PositionResponce toposResponce(Wrapper wrapper);
+   PositionResponse toposResponce(Wrapper wrapper);
     @Mapping(target ="department.department",source="departmentId")
     @Mapping(target ="department.depName",source="depName")
-    @Mapping(target ="department.depCreatedAtDep",source="depCreatedAtDep")
+    @Mapping(target ="department.depCreatedAt",source="depCreatedAt")
     @Mapping(target ="department.depUpdatedAt",source="depUpdatedAt")
-    List<PositionResponce> topositionList(List<Wrapper> rapperList);
-    @Mapping(target = "posCreatedAtDep", expression = "java(LocalDateTime.now())")
-    Position toPosition(PositionResquest positionResquest);
+    List<PositionResponse> topositionList(List<Wrapper> rapperList);
+    @Mapping(target = "posCreatedAt", expression = "java(LocalDateTime.now())")
+    Position toPosition(PositionRequest positionRequest);
     @Mapping(target = "posUpdatedAt", expression = "java(LocalDateTime.now())")
-    Position toPositionByID (Long positionId,PositionResquest positionResquest);
+    Position toPositionByID (Long positionId, PositionRequest positionRequest);
 }

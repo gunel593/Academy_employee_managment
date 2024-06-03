@@ -14,6 +14,6 @@ public class Department {
 
     private Long departmentId;
     private String depName;
-    private LocalDateTime depCreatedAtDep;
+    private LocalDateTime depCreatedAt;
     private LocalDateTime depUpdatedAt;
 }

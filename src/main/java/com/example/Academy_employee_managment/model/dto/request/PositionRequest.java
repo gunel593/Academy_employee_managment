@@ -1,6 +1,5 @@
 package com.example.Academy_employee_managment.model.dto.request;
 
-import com.example.Academy_employee_managment.model.entity.Department;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,12 +11,12 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PositionResquest {
+public class PositionRequest {
     //private Long positionId;
     private String positionName;
     private Long salary;
     private Long departmentId;
-    private LocalDateTime posCreatedAtDep;
+    private LocalDateTime posCreatedAt;
    private LocalDateTime posUpdatedAt;
 
 }

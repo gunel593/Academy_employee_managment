@@ -20,12 +20,16 @@
         insert into Positions(
         positionName,
         salary,
-        departmentId
+        departmentId,
+        posCreatedAt,
+        posUpdatedAt
        )
         values(
         #{positionName},
         #{salary},
-        #{departmentId}
+        #{departmentId},
+        #{posCreatedAt},
+        #{posUpdatedAt}
         );
     </insert>
     <update id="editPos">
@@ -33,15 +37,14 @@
         set p.positionName=#{positionName},
         p.salary=#{salary},
         p.departmentId=#{departmentId},
-        p.posCreatedAtDep=#{posCreatedAtDep},
-        p.posUpdatedAt=#{posUpdatedAt},
-        }
+        p.posUpdatedAt=#{posUpdatedAt}
         where p.positionId=#{positionId};
     </update>
     <delete id="deletePos">
-        FROM employee_management.positions p
+        delete
+        from employee_management.positions p
         <where>
-            e.positionId=#{positionId};
+            p.positionId=#{positionId};
         </where>
     </delete>
     <sql id="appsBaseColumns">
@@ -49,18 +52,18 @@
         p.positionName,
         p.salary,
         p.departmentId,
-        p.posCreatedAtDep,
+        p.posCreatedAt,
         p.posUpdatedAt
     </sql>
     <sql id="appWrapperColumns">
         p.positionId,
         p.positionName,
         p.salary,
-        p.posCreatedAtDep,
+        p.posCreatedAt,
         p.posUpdatedAt,
         d.departmentId,
         d.depName,
-        d.depCreatedAtDep,
+        d.depCreatedAt,
         d.depUpdatedAt
     </sql>
 </mapper>

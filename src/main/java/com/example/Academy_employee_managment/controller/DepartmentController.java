@@ -1,7 +1,7 @@
 package com.example.Academy_employee_managment.controller;
 
 import com.example.Academy_employee_managment.model.dto.request.DepartmentRequest;
-import com.example.Academy_employee_managment.model.dto.responce.DepartmentResponce;
+import com.example.Academy_employee_managment.model.dto.responce.DepartmentResponse;
 import com.example.Academy_employee_managment.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +15,13 @@ import java.util.List;
 public class DepartmentController {
     private final DepartmentService departmentService;
     @GetMapping
-    public ResponseEntity<List<DepartmentResponce>> getAllDeps(){
-        List<DepartmentResponce>deps= departmentService.depGetAll();
+    public ResponseEntity<List<DepartmentResponse>> getAllDeps(){
+        List<DepartmentResponse>deps= departmentService.depGetAll();
         return ResponseEntity.ok(deps);
     }
     @GetMapping("/id/{departmentId}")
-    public ResponseEntity <DepartmentResponce> getDepartmenById(@PathVariable("departmentId")Long departmentId){
-        DepartmentResponce dep= departmentService.getDepartmentById(departmentId);
+    public ResponseEntity <DepartmentResponse> getDepartmenById(@PathVariable("departmentId")Long departmentId){
+        DepartmentResponse dep= departmentService.getDepartmentById(departmentId);
         return ResponseEntity.ok(dep);
     }
     @PostMapping
@@ -35,7 +35,7 @@ public class DepartmentController {
         departmentService.editDep(departmentId,departmentRequest);
         return ResponseEntity.ok().build();
     }
-    @DeleteMapping("departmentId/{departmentId}")
+    @DeleteMapping("id/{departmentId}")
     public ResponseEntity <Void> deleteDeps(@PathVariable("departmentId")Long departmentId){
         departmentService.deleteDep(departmentId);
         return ResponseEntity.ok().build();

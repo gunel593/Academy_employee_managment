@@ -1,5 +1,6 @@
 package com.example.Academy_employee_managment.model.dto.responce;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,10 +11,11 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class DepartmentResponce {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class DepartmentResponse {
 
     private Long departmentId;
     private String depName;
-    private LocalDateTime depCreatedAtDep;
+    private LocalDateTime depCreatedAt;
     private LocalDateTime depUpdatedAt;
 }

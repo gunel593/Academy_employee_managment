@@ -7,7 +7,7 @@
         SELECT
         d.departmentId,
         d.depName,
-        d.depCreatedAtDep,
+        d.depCreatedAt,
         d.depUpdatedAt
         FROM employee_management.departments d;
     </select>
@@ -21,24 +21,23 @@
     <insert id="saveDep">
         insert into Departments(
         depName,
-        depCreatedAtDep,
+        depCreatedAt,
         depUpdatedAt
         )
         values(
         #{depName},
-        #{depCreatedAtDep},
+        #{depCreatedAt},
         #{depUpdatedAt}
         );
     </insert>
     <update id="editDep">
         update employee_management.departments d
         set d.depName=#{depName},
-        d.depCreatedAtDep=#{depCreatedAtDep},
         d.depUpdatedAt=#{depUpdatedAt}
         where d.departmentId=#{departmentId};
     </update>
     <delete id="deleteDep">
-        FROM employee_management.departments d
+        delete from employee_management.departments d
         <where>
             d.departmentId=#{departmentId};
         </where>
@@ -46,7 +45,7 @@
     <sql id="appBaseColumns">
         d.departmentId,
         d.depName,
-        d.depCreatedAtDep,
+        d.depCreatedAt,
         d.depUpdatedAt
     </sql>
 </mapper>

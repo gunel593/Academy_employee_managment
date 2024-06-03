@@ -14,12 +14,12 @@ public class Wrapper {
     private Long positionId;
     private String positionName;
     private Long salary;
-    private LocalDateTime posCreatedAtDep;
+    private LocalDateTime posCreatedAt;
     private LocalDateTime posUpdatedAt;
     //department in fielder
     private Long departmentId;
     private String depName;
-    private LocalDateTime depCreatedAtDep;
+    private LocalDateTime depCreatedAt;
     private LocalDateTime depUpdatedAt;
 
 }
