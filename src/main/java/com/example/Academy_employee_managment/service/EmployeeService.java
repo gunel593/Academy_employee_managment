@@ -9,6 +9,7 @@ public interface EmployeeService {
     List<EmployeeResponse> empGetAll();
     EmployeeResponse getEmployeeById(Long employeeId);
     void saveEmp(EmployeeRequest employeeRequest);
+//    boolean statusEmp(boolean status);
     void editEmp(Long employeeId, EmployeeRequest employeeRequest);
     void deleteEmp(Long employeeId);
 }

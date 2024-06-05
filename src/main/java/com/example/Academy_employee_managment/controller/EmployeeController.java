@@ -24,6 +24,11 @@ public class EmployeeController {
         EmployeeResponse emp= employeeService.getEmployeeById(employeeId);
         return ResponseEntity.ok(emp);
     }
+//    @PatchMapping("status/{status}")
+//    public ResponseEntity <Void> statusEmps(@PathVariable("status")boolean status){
+//        employeeService.statusEmp(status);
+//        return ResponseEntity.ok().build();
+//    }
     @PostMapping
     public ResponseEntity <Void> saveEmps(@RequestBody EmployeeRequest employeeRequest) {
         employeeService.saveEmp(employeeRequest);

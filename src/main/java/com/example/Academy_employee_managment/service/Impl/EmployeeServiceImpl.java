@@ -46,6 +46,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.error("Just error.{}", employeeRequest);
     }
 
+//    @Override
+//    public boolean statusEmp(boolean status) {
+//        return false;
+//    }
+
     @Override
     public void editEmp(Long employeeId, EmployeeRequest employeeRequest) {
         Employee employees=employeeMapper.toEmployeeByID(employeeId, employeeRequest);

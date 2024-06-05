@@ -14,6 +14,7 @@ public interface EmployeeMyBatis {
     List<EmpWrapper> getAllEmp();
     EmpWrapper getEmployeeById(@Param("employeeId")Long employeeId);
     void saveEmp(Employee employee);
+  //  boolean statusEmp(boolean status);
     void editEmp(Employee employee);
     void deleteEmp(@Param("employeeId")Long employeeId);
 }
