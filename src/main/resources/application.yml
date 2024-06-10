@@ -12,4 +12,4 @@ mybatis:
     type-aliases-package: com.example.Academy_employee_managment.model
 security:
   secret-key: CgTOA2QC9nxYspeBZBRsEIoDmpBbGTjfDCE6WfnOHHrA7rgHafqC5u1m6GL22pNY
-  expiration: 3000
+  expiration: 300000

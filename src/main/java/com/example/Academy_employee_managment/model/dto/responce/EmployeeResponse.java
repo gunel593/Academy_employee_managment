@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EmployeeResponse {
-    private String employeeId;
+    private Long employeeId;
     private String empName;
     private String empSurname;
     private String empEmail;
