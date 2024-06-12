@@ -20,6 +20,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 public class EmployeeManagerTest {
@@ -47,7 +48,7 @@ public class EmployeeManagerTest {
         when(departmentMyBatis.getAllDep()).thenReturn(departmentList);
        when(departmentMapper.toDepartmentResponceList(departmentList)).thenReturn(excepted);
 
-        //then
+        //then/////////////
        List<DepartmentResponse> actual=departmentServiceImpl.depGetAll();
          assertEquals(excepted,actual);
          verify(departmentMyBatis,times(1)).getAllDep();
@@ -55,4 +56,29 @@ public class EmployeeManagerTest {
          verifyNoMoreInteractions(departmentMapper,departmentMyBatis);
          //verifyNoInteractions(departmentMyBatis);
      }
+    void getByIdDep_Success(){
+        //given
+        DateTimeFormatter formatter = DateTimeFormatter. ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime. parse("2019-03-27 10:15:30", formatter);
+        Department tests= Department.builder().departmentId(1L).depName("Security").build();
+        Optional<Department> departmentOptional= Optional.of(tests);
+
+        DepartmentResponse departmentResponse=
+                DepartmentResponse.builder().departmentId(1L).depName("Security")
+                        .depCreatedAt(dateTime).build();
+        DepartmentResponse excepted=new DepartmentResponse();
+        //List<DepartmentResponse>wrongExpected=List.of();
+
+        //when
+        when(departmentMyBatis.getDepartmentById(departmentResponse.getDepartmentId())).thenReturn(departmentOptional);
+        when(departmentMapper.todepResponce(tests)).thenReturn(departmentResponse);
+
+        //then/////////////
+        DepartmentResponse actual=departmentServiceImpl.getDepartmentById(departmentResponse.getDepartmentId());
+        assertEquals(excepted,actual);
+        verify(departmentMyBatis,times(1)).getDepartmentById(departmentResponse.getDepartmentId());
+        verify(departmentMapper,times(1)).todepResponce(tests);
+        verifyNoMoreInteractions(departmentMapper,departmentMyBatis);
+        //verifyNoInteractions(departmentMyBatis);
+    }
 }

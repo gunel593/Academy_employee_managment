@@ -5,9 +5,11 @@ import com.example.Academy_employee_managment.model.dto.responce.DepartmentRespo
 import com.example.Academy_employee_managment.model.entity.Department;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
+@Component
 @Mapper(componentModel = "spring", imports = {LocalDateTime.class})
 public interface DepartmentMapper {
     //DepartmentMapper INSTANCE = Mappers.getMapper(DepartmentMapper.class);

@@ -6,9 +6,11 @@ import com.example.Academy_employee_managment.model.dto.wrapper.EmpWrapper;
 import com.example.Academy_employee_managment.model.entity.Employee;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
+@Component
 @Mapper(componentModel = "spring", imports = {LocalDateTime.class})
 public interface EmployeeMapper {
     //EmployeeMapper INSTANCE = Mappers.getMapper(EmployeeMapper.class);
