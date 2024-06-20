@@ -38,7 +38,13 @@ public class TokenBaseSecurity {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         authManager -> authManager
-                                .requestMatchers(WHITE_LIST)
+                                .requestMatchers(  "/test/web-flux",
+                                        "/v3/api-docs/**",
+                                        "/v3/api-docs.yaml",
+                                        "/swagger-ui/**",
+                                        "/swagger-ui.html",
+                                        "/user/register",
+                                        "/user/login")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()

@@ -1,8 +1,9 @@
-package com.example.Academy_employee_managment.service.controller;
+package com.example.Academy_employee_managment.controller;
 
-import com.example.Academy_employee_managment.model.dto.request.DepartmentRequest;
 import com.example.Academy_employee_managment.model.dto.request.EmployeeRequest;
 import com.example.Academy_employee_managment.model.dto.responce.EmployeeResponse;
+import com.example.Academy_employee_managment.model.entity.Department;
+import com.example.Academy_employee_managment.model.entity.Position;
 import com.example.Academy_employee_managment.service.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -36,9 +37,16 @@ public class EmployeeControllerTest {
             employeeResponse.setEmployeeId(3L);
             List<EmployeeResponse> employeeResponseList = List.of(employeeResponse);
 
-            EmployeeResponse.builder().employeeId(2L).empName("Gunel")
-                    .empSurname("Quluyeva").empEmail("fdjbfs@gmail.com")
-                    .status(1).build();
+            EmployeeResponse
+                    .builder()
+                    .employeeId(2L)
+                    .empName("Gunel")
+                    .position(new Position())
+                    .department(new Department())
+                    .empSurname("Quluyeva")
+                    .empEmail("fdjbfs@gmail.com")
+                    .status(1)
+                    .build();
 
 //departmentin fieldlerini nece edek vede created at
             //given

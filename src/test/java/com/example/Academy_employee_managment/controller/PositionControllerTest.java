@@ -1,11 +1,8 @@
-package com.example.Academy_employee_managment.service.controller;
+package com.example.Academy_employee_managment.controller;
 
-import com.example.Academy_employee_managment.model.dto.request.DepartmentRequest;
-import com.example.Academy_employee_managment.model.dto.request.EmployeeRequest;
 import com.example.Academy_employee_managment.model.dto.request.PositionRequest;
-import com.example.Academy_employee_managment.model.dto.responce.DepartmentResponse;
 import com.example.Academy_employee_managment.model.dto.responce.PositionResponse;
-import com.example.Academy_employee_managment.service.DepartmentService;
+import com.example.Academy_employee_managment.model.entity.Department;
 import com.example.Academy_employee_managment.service.PositionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -24,7 +21,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-@WebMvcTest(controllers = DepartmentControllerTest.class)
+@WebMvcTest(controllers = EmployeeControllerTest.class)
 @WithMockUser(username = "user",password = "pass")
 public class PositionControllerTest {
     @Autowired
@@ -39,7 +36,13 @@ public class PositionControllerTest {
         positionResponse.setPositionId(1L);
         List<PositionResponse> positionResponseList = List.of(positionResponse);
 
-        PositionResponse.builder().positionId(1L).positionName("Security").build();
+        PositionResponse
+                .builder()
+                .positionId(1L)
+                .positionName("Security")
+                .salary(18000L)
+                .department(new Department())
+                .build();
 
         //given
 

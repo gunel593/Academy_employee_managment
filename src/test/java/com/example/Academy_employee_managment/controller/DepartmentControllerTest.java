@@ -1,4 +1,4 @@
-package com.example.Academy_employee_managment.service.controller;
+package com.example.Academy_employee_managment.controller;
 
 import com.example.Academy_employee_managment.model.dto.request.DepartmentRequest;
 import com.example.Academy_employee_managment.model.dto.responce.DepartmentResponse;
@@ -12,7 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.doNothing;
@@ -50,7 +49,7 @@ public class DepartmentControllerTest {
         //when
         when(departmentService.depGetAll()).thenReturn(departmentResponseList);
         ///then
-        mockMvc.perform(get("/department/no-auth")
+        mockMvc.perform(get("/department")
         )
               .andExpect(jsonPath("$.[0].departmentId", is(2))
               )    .andExpect(status().isOk());

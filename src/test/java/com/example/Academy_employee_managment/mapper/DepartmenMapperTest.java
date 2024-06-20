@@ -12,10 +12,18 @@ public class DepartmenMapperTest {
     @Autowired
     private DepartmentMapper departmentMapper;
     @Test
-    public void testDepartmentMapper(){
-       Department department= Department.builder().departmentId(1L).depName("IT").build();
-       DepartmentResponse expected= DepartmentResponse.builder().departmentId(1L).depName("IT").build();
-      DepartmentResponse actual= departmentMapper.todepResponce(department);
-      assertEquals(expected,actual);
+    public void testDepartmentMapper() {
+        Department department = Department
+                .builder()
+                .departmentId(1L)
+                .depName("IT")
+                .build();
+        DepartmentResponse expected = DepartmentResponse
+                .builder()
+                .departmentId(1L)
+                .depName("IT")
+                .build();
+        DepartmentResponse actual = departmentMapper.todepResponce(department);
+        assertEquals(expected, actual);
     }
 }
